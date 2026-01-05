@@ -2239,6 +2239,480 @@
             }
         }
 
+        /* ========================================
+           RESPONSIVE STYLES
+           ======================================== */
+
+        /* Large Desktop (1400px+) - Default styles apply */
+
+        /* Desktop (1200px - 1399px) */
+        @media (max-width: 1399px) {
+            .container {
+                padding: 0 clamp(20px, 4vw, 60px);
+            }
+
+            .projects-grid {
+                gap: 24px;
+            }
+        }
+
+        /* Small Desktop / Large Tablet (992px - 1199px) */
+        @media (max-width: 1199px) {
+            .hero-title {
+                font-size: clamp(2.5rem, 6vw, 4rem);
+            }
+
+            .stats-grid {
+                gap: 32px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .capabilities-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 28px;
+            }
+        }
+
+        /* Tablet (768px - 991px) */
+        @media (max-width: 991px) {
+            body {
+                cursor: auto;
+            }
+
+            .cursor, .cursor-dot {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 7vw, 3rem);
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+
+            .stat-value {
+                font-size: clamp(2rem, 5vw, 3rem);
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .expertise-grid {
+                gap: 10px;
+            }
+
+            .expertise-tag {
+                padding: 12px 18px;
+                font-size: 0.85rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .tech-item {
+                padding: 20px;
+            }
+
+            .capabilities-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .cap-item {
+                padding: 16px 20px;
+                font-size: 0.9rem;
+            }
+
+            .project-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .domain-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .domain-item {
+                padding: 20px;
+            }
+
+            .nav-robot {
+                display: none;
+            }
+        }
+
+        /* Mobile Landscape / Small Tablet (576px - 767px) */
+        @media (max-width: 767px) {
+            .nav {
+                top: 16px;
+                right: 16px;
+                left: auto;
+                transform: none;
+                padding: 8px;
+                border-radius: 16px;
+            }
+
+            .nav::before {
+                border-radius: 16px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: calc(100% + 12px);
+                right: 0;
+                flex-direction: column;
+                background: linear-gradient(135deg, rgba(17, 17, 20, 0.98) 0%, rgba(9, 9, 11, 0.99) 100%);
+                backdrop-filter: blur(30px);
+                border: 1px solid rgba(255, 107, 74, 0.25);
+                border-radius: 20px;
+                padding: 12px;
+                min-width: 200px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 14px 20px;
+                font-size: 0.85rem;
+                border-radius: 12px;
+            }
+
+            .nav-toggle {
+                display: flex;
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                padding-top: 100px;
+                min-height: auto;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 8px 16px;
+            }
+
+            .hero-title {
+                font-size: clamp(1.75rem, 8vw, 2.5rem);
+                margin-bottom: 16px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-section {
+                padding: 40px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .stat-item {
+                text-align: center;
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .section-header {
+                margin-bottom: 24px;
+            }
+
+            .section-label {
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .expertise-section,
+            .tech-section,
+            .capabilities-section,
+            .projects-section,
+            .domain-section {
+                padding: 50px 0;
+            }
+
+            .expertise-grid {
+                gap: 8px;
+            }
+
+            .expertise-tag {
+                padding: 10px 14px;
+                font-size: 0.8rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .tech-item {
+                padding: 16px;
+            }
+
+            .tech-item h4 {
+                font-size: 0.9rem;
+            }
+
+            .tech-item p {
+                font-size: 0.8rem;
+            }
+
+            .capabilities-list {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .cap-item {
+                padding: 14px 16px;
+                font-size: 0.85rem;
+            }
+
+            .project-card {
+                padding: 24px;
+            }
+
+            .project-badge {
+                font-size: 0.7rem;
+            }
+
+            .project-title {
+                font-size: 1.25rem;
+            }
+
+            .project-desc {
+                font-size: 0.9rem;
+            }
+
+            .project-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .metric-value {
+                font-size: 1.25rem;
+            }
+
+            .metric-label {
+                font-size: 0.7rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+
+            .project-deploy {
+                font-size: 0.8rem;
+            }
+
+            .project-tags {
+                gap: 6px;
+            }
+
+            .tag {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+            }
+
+            .domain-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .domain-item {
+                padding: 20px;
+            }
+
+            .domain-item h4 {
+                font-size: 1rem;
+            }
+
+            .domain-item p {
+                font-size: 0.85rem;
+            }
+
+            .cta-section {
+                padding: 50px 0;
+            }
+
+            .cta-title {
+                font-size: 1.75rem;
+            }
+
+            .cta-text {
+                font-size: 1rem;
+            }
+
+            .footer {
+                padding: 30px 0;
+                font-size: 0.8rem;
+            }
+
+            .ai-orb-container {
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .ai-orb {
+                width: 45px;
+                height: 45px;
+            }
+
+            .orb-core {
+                width: 24px;
+                height: 24px;
+            }
+
+            .orb-tooltip {
+                display: none;
+            }
+        }
+
+        /* Mobile Portrait (below 576px) */
+        @media (max-width: 575px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding-top: 90px;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .stats-grid {
+                gap: 24px;
+            }
+
+            .stat-value {
+                font-size: 2.25rem;
+            }
+
+            .expertise-tag {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .capabilities-list {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 1.15rem;
+            }
+
+            .project-metrics {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expand-hint {
+                font-size: 0.75rem;
+            }
+
+            .processing-badge {
+                display: none;
+            }
+        }
+
+        /* Extra Small Mobile (below 400px) */
+        @media (max-width: 399px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .expertise-tag {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+            }
+
+            .project-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .metric {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -2379,7 +2853,7 @@
                 <h2 class="section-title">What We Master</h2>
             </div>
             <div class="expertise-grid">
-                <span class="expertise-tag">LLM Integration (GPT, Claude, Gemini, Grok)</span>
+                <span class="expertise-tag">LLM Integration (GPT, Claude, Gemini, Groq)</span>
                 <span class="expertise-tag">RAG Architecture & Vector DBs</span>
                 <span class="expertise-tag">Agentic AI & Multi-Agent Systems</span>
                 <span class="expertise-tag">Prompt Engineering & Optimization</span>
@@ -2420,7 +2894,7 @@
                 </div>
                 <div class="tech-item">
                     <h4>AI Frameworks</h4>
-                    <p>LangChain, CrewAI, Haystack</p>
+                    <p>LangChain, LangGraph, CrewAI, Haystack</p>
                 </div>
                 <div class="tech-item">
                     <h4>Vector DBs</h4>
@@ -2450,18 +2924,18 @@
                 <h2 class="section-title">What We Build</h2>
             </div>
             <div class="capabilities-list">
-                <div class="cap-item">Custom LLM Fine-tuning</div>
+                <div class="cap-item">Conversational AI Systems</div>
+                <div class="cap-item">Autonomous AI Agents</div>
+                <div class="cap-item">RAG-Powered Applications</div>
                 <div class="cap-item">Document Intelligence (IDP)</div>
-                <div class="cap-item">FSM-based Conversation Flows</div>
+                <div class="cap-item">Custom LLM Fine-tuning</div>
+                <div class="cap-item">Multimodal AI Solutions</div>
                 <div class="cap-item">Semantic & Hybrid Search</div>
                 <div class="cap-item">AI Scoring & Evaluation</div>
-                <div class="cap-item">Multimodal AI Integration</div>
-                <div class="cap-item">Chain-of-Thought Prompting</div>
-                <div class="cap-item">Vector Embeddings & Storage</div>
-                <div class="cap-item">Real-time AI Streaming (SSE)</div>
-                <div class="cap-item">AI Content Moderation</div>
-                <div class="cap-item">Automated Workflow Triggers</div>
-                <div class="cap-item">Context Window Optimization</div>
+                <div class="cap-item">Real-time AI Streaming</div>
+                <div class="cap-item">Workflow Automation</div>
+                <div class="cap-item">Voice & Speech AI</div>
+                <div class="cap-item">AI-Powered Analytics</div>
             </div>
         </section>
 
@@ -2484,7 +2958,7 @@
                     <div class="project-header">
                         <div class="project-badge">Enterprise SaaS · HR Tech · Japan</div>
                         <h3 class="project-title">AI-Powered Corporate Goal Setting Platform</h3>
-                        <p class="project-teaser">Multi-tenant conversational AI for structured goal-setting using FSM flows and RAG.</p>
+                        <p class="project-teaser">Transforming how enterprises approach employee goal-setting through conversational AI coaching.</p>
                         <div class="expand-hint">
                             <span class="hint-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -2496,7 +2970,7 @@
                     </div>
 
                     <div class="project-content">
-                        <p class="project-desc">Built a multi-tenant conversational AI platform that guides employees through structured goal-setting using the Shimada methodology. The system uses FSM-based conversation flows to ensure quality coaching while RAG enables policy-aligned goal recommendations.</p>
+                        <p class="project-desc">Japanese enterprises struggle with inconsistent goal quality and time-consuming HR coaching. This platform delivers AI-powered coaching at scale—guiding employees through structured conversations to create SMART goals aligned with company policies. FSM-based flows ensure consistent coaching quality, while RAG retrieves relevant policies for contextual recommendations.</p>
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-value">5+</span>
@@ -2606,9 +3080,9 @@
                     <div class="data-stream">Processing vision AI data...</div>
 
                     <div class="project-header">
-                        <div class="project-badge">Fashion E-Commerce · Generative AI · Vision</div>
-                        <h3 class="project-title">OutfitLens - AI Virtual Try-On</h3>
-                        <p class="project-teaser">Virtual try-on using Gemini 2.0 Flash for realistic clothing visualization.</p>
+                        <div class="project-badge">Fashion Tech · Generative AI · Computer Vision</div>
+                        <h3 class="project-title">OutfitLens - AI Virtual Try-On Platform</h3>
+                        <p class="project-teaser">Revolutionizing online fashion retail with AI-powered virtual try-on technology.</p>
                         <div class="expand-hint">
                             <span class="hint-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -2620,7 +3094,7 @@
                     </div>
 
                     <div class="project-content">
-                        <p class="project-desc">AI-powered virtual try-on application that allows users to visualize how clothing items would look on them. Uses Google's Gemini 2.0 Flash model for realistic image generation, solving the "How will this look on me?" problem in online fashion retail.</p>
+                        <p class="project-desc">E-commerce fashion retailers lose billions annually to returns from "didn't fit" or "looked different." OutfitLens eliminates this friction by letting shoppers virtually try on clothing before purchase. Powered by Google's Gemini 2.0 Flash multimodal AI, the platform generates photorealistic visualizations in under 3 seconds—transforming how consumers shop for fashion online.</p>
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-value">40%</span>
@@ -2638,23 +3112,23 @@
                         <div class="project-features">
                             <div class="features-title">Key Features</div>
                             <div class="features-grid">
-                                <div class="feature">AI virtual try-on</div>
-                                <div class="feature">Real-time generation</div>
-                                <div class="feature">Multi-format support</div>
-                                <div class="feature">Async pipeline</div>
-                                <div class="feature">History tracking</div>
-                                <div class="feature">Privacy-first design</div>
+                                <div class="feature">Photorealistic try-on</div>
+                                <div class="feature">Sub-3s generation</div>
+                                <div class="feature">Body-aware rendering</div>
+                                <div class="feature">Async processing pipeline</div>
+                                <div class="feature">Try-on history</div>
+                                <div class="feature">Privacy-first architecture</div>
                             </div>
                         </div>
                         <div class="project-deploy">
-                            <strong>Deploy:</strong> DDD Architecture | SQLAlchemy | JWT | REST API | Alembic
+                            <strong>Architecture:</strong> DDD Pattern | Async Queue | JWT Auth | REST API | PostgreSQL
                         </div>
                         <div class="project-tags">
                             <span class="tag">FastAPI</span>
-                            <span class="tag">Gemini 2.0</span>
-                            <span class="tag">Vision AI</span>
-                            <span class="tag">SQLAlchemy</span>
-                            <span class="tag">Pydantic</span>
+                            <span class="tag">Gemini 2.0 Flash</span>
+                            <span class="tag">Multimodal AI</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">DDD</span>
                         </div>
                     </div>
                 </div>
@@ -2666,8 +3140,8 @@
             <div class="section-header">
                 <div class="section-scan-line"></div>
                 <div class="processing-badge">Processing</div>
-                <div class="section-label">Domain Experience</div>
-                <h2 class="section-title">Industries We Serve</h2>
+                <div class="section-label">AI Specializations</div>
+                <h2 class="section-title">Our Areas of Expertise</h2>
             </div>
             <div class="domain-grid">
                 <div class="domain-item">
@@ -2675,48 +3149,48 @@
                     <p>Multi-turn dialogues, FSM flows, customer support automation</p>
                 </div>
                 <div class="domain-item">
-                    <h4>AI Agents</h4>
-                    <p>Autonomous execution, multi-agent orchestration, tool-using agents</p>
+                    <h4>Autonomous AI Agents</h4>
+                    <p>Multi-agent orchestration, tool-using agents, autonomous workflows</p>
                 </div>
                 <div class="domain-item">
                     <h4>RAG Systems</h4>
-                    <p>Vector databases, semantic search, enterprise knowledge bases</p>
+                    <p>Vector databases, semantic search, enterprise knowledge retrieval</p>
                 </div>
                 <div class="domain-item">
                     <h4>Document Intelligence</h4>
                     <p>OCR, invoice processing, form recognition, data extraction</p>
                 </div>
                 <div class="domain-item">
-                    <h4>Voice AI</h4>
+                    <h4>Voice & Speech AI</h4>
                     <p>TTS, speech recognition, voice assistants, transcription</p>
                 </div>
                 <div class="domain-item">
-                    <h4>Image Generation</h4>
-                    <p>Text-to-image, editing, style transfer, visualization</p>
-                </div>
-                <div class="domain-item">
-                    <h4>Video AI</h4>
-                    <p>Text-to-video, summarization, automated editing</p>
+                    <h4>Generative AI</h4>
+                    <p>Text-to-image, content generation, creative AI applications</p>
                 </div>
                 <div class="domain-item">
                     <h4>Computer Vision</h4>
-                    <p>Object detection, facial analysis, visual inspection</p>
+                    <p>Object detection, visual inspection, image analysis</p>
+                </div>
+                <div class="domain-item">
+                    <h4>Multimodal AI</h4>
+                    <p>Vision-language models, cross-modal understanding</p>
                 </div>
                 <div class="domain-item">
                     <h4>Workflow Automation</h4>
-                    <p>Process automation, intelligent routing, scheduling</p>
+                    <p>Process automation, intelligent routing, task orchestration</p>
                 </div>
                 <div class="domain-item">
-                    <h4>HR Tech</h4>
-                    <p>Goal-setting, performance evaluation, recruitment AI</p>
+                    <h4>HR & Talent Tech</h4>
+                    <p>Goal-setting AI, performance evaluation, recruitment automation</p>
                 </div>
                 <div class="domain-item">
-                    <h4>EdTech</h4>
-                    <p>Adaptive learning, assessment AI, placement prediction</p>
+                    <h4>EdTech & Learning</h4>
+                    <p>Adaptive learning, AI assessments, student lifecycle automation</p>
                 </div>
                 <div class="domain-item">
-                    <h4>E-Commerce AI</h4>
-                    <p>Recommendations, virtual try-on, personalization</p>
+                    <h4>Retail & E-Commerce</h4>
+                    <p>Virtual try-on, personalization, product recommendations</p>
                 </div>
             </div>
         </section>
