@@ -2119,6 +2119,601 @@
             }
         }
 
+        /* ===== SLEEPING ROBOT CONTACT WIDGET ===== */
+        .robot-contact {
+            position: fixed;
+            top: 80px;
+            right: 80px;
+            z-index: 9998;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            transition: top 1.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                        right 1.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        /* Traveled state - center right */
+        .robot-contact.traveled {
+            top: calc(50vh - 38px);
+            right: 40px;
+        }
+
+        /* Subtle hover-bob while traveled and awake */
+        .robot-contact.traveled.awake .robot-widget {
+            animation: awakeHover 2.5s ease-in-out infinite;
+        }
+
+        @keyframes awakeHover {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .robot-widget {
+            position: relative;
+            width: 76px;
+            height: 76px;
+            flex-shrink: 0;
+        }
+
+        /* Robot Body */
+        .robot-contact .robot-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 42px;
+            background: linear-gradient(135deg, #5a5a6a 0%, #3e3e4e 100%);
+            border-radius: 10px 10px 8px 8px;
+            border: 2px solid rgba(255, 143, 107, 0.8);
+            overflow: hidden;
+            box-shadow: 0 0 16px rgba(255, 107, 74, 0.35),
+                        0 0 40px rgba(255, 107, 74, 0.15),
+                        0 8px 32px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .robot-contact .robot-body::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 6px;
+            background: linear-gradient(135deg, rgba(255, 107, 74, 0.4) 0%, rgba(255, 107, 74, 0.2) 100%);
+            border-radius: 3px;
+            border: 1px solid rgba(255, 107, 74, 0.35);
+        }
+
+        .robot-contact .robot-body::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 4px;
+            background: rgba(255, 107, 74, 0.3);
+            border-radius: 2px;
+        }
+
+        /* Robot Head */
+        .robot-contact .robot-head {
+            position: absolute;
+            bottom: 34px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 42px;
+            height: 32px;
+            background: linear-gradient(135deg, #606070 0%, #444455 100%);
+            border-radius: 14px 14px 8px 8px;
+            border: 2px solid rgba(255, 143, 107, 0.8);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 16px rgba(255, 107, 74, 0.35),
+                        0 0 40px rgba(255, 107, 74, 0.15),
+                        0 8px 32px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Robot Mouth - subtle smile line */
+        .robot-contact .robot-head::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 5px;
+            border-bottom: 2px solid rgba(255, 107, 74, 0.45);
+            border-radius: 0 0 50% 50%;
+        }
+
+        /* Robot Eyes */
+        .robot-contact .robot-eyes {
+            position: absolute;
+            top: 9px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .robot-contact .robot-eye {
+            width: 8px;
+            height: 8px;
+            background: #ff8f6b;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255, 107, 74, 0.7), 0 0 24px rgba(255, 107, 74, 0.4), 0 0 40px rgba(255, 107, 74, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* Sleeping state - eyes are lines but still glowing */
+        .robot-contact.sleeping .robot-eye {
+            height: 2px;
+            border-radius: 2px;
+            opacity: 1;
+            box-shadow: 0 0 8px rgba(255, 107, 74, 0.6), 0 0 16px rgba(255, 107, 74, 0.3);
+        }
+
+        .robot-contact.sleeping .robot-head {
+            transform: translateX(-50%) translateY(5px) rotate(-10deg);
+        }
+
+        .robot-contact.sleeping .robot-head::after {
+            border-bottom-color: rgba(255, 107, 74, 0.15);
+        }
+
+        /* Antenna */
+        .robot-antenna-contact {
+            position: absolute;
+            bottom: 64px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 14px;
+            background: rgba(255, 143, 107, 0.7);
+            border-radius: 2px;
+        }
+
+        .robot-antenna-contact::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: #ff8f6b;
+            border-radius: 50%;
+            box-shadow: 0 0 14px rgba(255, 107, 74, 0.8), 0 0 30px rgba(255, 107, 74, 0.4), 0 0 50px rgba(255, 107, 74, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .robot-contact.sleeping .robot-antenna-contact::after {
+            opacity: 0.8;
+            box-shadow: 0 0 10px rgba(255, 107, 74, 0.6), 0 0 24px rgba(255, 107, 74, 0.3);
+            animation: sleepingAntenna 2s ease-in-out infinite;
+        }
+
+        @keyframes sleepingAntenna {
+            0%, 100% { opacity: 0.8; box-shadow: 0 0 10px rgba(255, 107, 74, 0.6), 0 0 24px rgba(255, 107, 74, 0.3); }
+            50% { opacity: 1; box-shadow: 0 0 18px rgba(255, 107, 74, 0.8), 0 0 36px rgba(255, 107, 74, 0.4), 0 0 50px rgba(255, 107, 74, 0.15); }
+        }
+
+        /* Robot Arms */
+        .robot-contact .robot-arm {
+            position: absolute;
+            bottom: 8px;
+            width: 6px;
+            height: 18px;
+            background: rgba(255, 143, 107, 0.45);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 143, 107, 0.4);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .robot-contact .robot-arm.left { left: 2px; transform: rotate(8deg); }
+        .robot-contact .robot-arm.right { right: 2px; transform: rotate(-8deg); }
+
+        /* "Wake me up" hint label */
+        .robot-hint {
+            margin-top: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fff;
+            opacity: 0;
+            white-space: nowrap;
+            animation: hintFadeIn 1s ease forwards 2s, hintPulse 3s ease-in-out infinite 3s;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 20px var(--accent-glow), 0 0 40px rgba(255, 107, 74, 0.4);
+        }
+
+        @keyframes hintFadeIn {
+            to { opacity: 0.85; }
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 0.85; }
+            50% { opacity: 0.5; }
+        }
+
+        .robot-contact:not(.sleeping) .robot-hint { display: none; }
+
+        /* Sleeping float animation */
+        .robot-contact.sleeping .robot-widget {
+            animation: robotFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes robotFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* ZZZ bubbles - bigger, bolder, glowing */
+        .zzz {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent);
+            opacity: 0;
+            animation: zzzFloat 2.8s ease-in-out infinite;
+            font-family: 'Space Grotesk', sans-serif;
+            text-shadow: 0 0 12px var(--accent-glow), 0 0 24px rgba(255, 107, 74, 0.4);
+            filter: drop-shadow(0 0 6px rgba(255, 107, 74, 0.5));
+        }
+
+        .zzz:nth-child(2) {
+            top: -20px;
+            right: -18px;
+            font-size: 0.9rem;
+            animation-delay: 0.9s;
+        }
+
+        .zzz:nth-child(3) {
+            top: -32px;
+            right: -10px;
+            font-size: 0.7rem;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes zzzFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.7); }
+            15% { opacity: 1; }
+            65% { opacity: 0.9; }
+            100% { opacity: 0; transform: translateY(-20px) scale(1.2); }
+        }
+
+        .robot-contact:not(.sleeping) .zzz { display: none; }
+
+        /* Awake state */
+        .robot-contact.awake .robot-eye {
+            height: 8px;
+            border-radius: 50%;
+            opacity: 1;
+            box-shadow: 0 0 10px var(--accent-glow), 0 0 20px rgba(255, 107, 74, 0.3);
+            animation: eyeBlink 3s ease-in-out infinite;
+        }
+
+        @keyframes eyeBlink {
+            0%, 42%, 48%, 100% { height: 8px; border-radius: 50%; }
+            45% { height: 2px; border-radius: 2px; }
+        }
+
+        .robot-contact.awake .robot-head {
+            transform: translateX(-50%) translateY(0) rotate(0deg);
+        }
+
+        .robot-contact.awake .robot-head::after {
+            border-bottom-color: rgba(255, 107, 74, 0.35);
+        }
+
+        .robot-contact.awake .robot-arm.left {
+            transform: rotate(-25deg) translateY(-6px);
+        }
+
+        .robot-contact.awake .robot-arm.right {
+            transform: rotate(25deg) translateY(-6px);
+        }
+
+        .robot-contact.awake .robot-antenna-contact::after {
+            opacity: 1;
+            animation: antennaPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes antennaPulse {
+            0%, 100% { box-shadow: 0 0 8px var(--accent-glow); }
+            50% { box-shadow: 0 0 16px var(--accent-glow), 0 0 24px rgba(255, 107, 74, 0.3); }
+        }
+
+        /* Wake-up shake */
+        .robot-contact.waking .robot-widget {
+            animation: wakeShake 0.5s ease-in-out;
+        }
+
+        @keyframes wakeShake {
+            0%, 100% { transform: rotate(0deg); }
+            15% { transform: rotate(-10deg); }
+            30% { transform: rotate(10deg); }
+            45% { transform: rotate(-8deg); }
+            60% { transform: rotate(6deg); }
+            75% { transform: rotate(-3deg); }
+        }
+
+        /* Chat Bubble - appears to the left of robot */
+        .robot-chat-bubble {
+            position: absolute;
+            top: 50%;
+            right: 90px;
+            transform: translateY(-50%) translateX(10px) scale(0.95);
+            width: 280px;
+            background: linear-gradient(135deg, rgba(26, 26, 31, 0.97) 0%, rgba(20, 20, 25, 0.99) 100%);
+            border: 1px solid rgba(255, 107, 74, 0.25);
+            border-radius: 16px;
+            padding: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+                        0 0 40px rgba(255, 107, 74, 0.08);
+            backdrop-filter: blur(30px);
+            overflow: hidden;
+        }
+
+        /* Arrow pointing right toward robot */
+        .robot-chat-bubble::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -7px;
+            width: 12px;
+            height: 12px;
+            background: rgba(26, 26, 31, 0.97);
+            border-right: 1px solid rgba(255, 107, 74, 0.25);
+            border-top: 1px solid rgba(255, 107, 74, 0.25);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .robot-chat-bubble.visible {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0) scale(1);
+            pointer-events: auto;
+        }
+
+        /* Scan line across bubble on open */
+        .robot-chat-bubble .bubble-scan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .robot-chat-bubble.visible .bubble-scan {
+            animation: bubbleScan 0.8s ease-out forwards;
+        }
+
+        @keyframes bubbleScan {
+            0% { top: 0; opacity: 0.8; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Bubble header */
+        .bubble-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bubble-status {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .bubble-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        /* Typewriter message area */
+        .bubble-messages {
+            padding: 14px 16px;
+            min-height: 50px;
+        }
+
+        .bubble-msg {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translateY(6px);
+            transition: all 0.3s ease;
+        }
+
+        .bubble-msg.typed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bubble-msg .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .type-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 14px;
+            background: var(--accent);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: typeCursorBlink 0.6s step-end infinite;
+        }
+
+        @keyframes typeCursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Contact links */
+        .bubble-links {
+            padding: 0 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.4s ease 0.2s;
+        }
+
+        .bubble-links.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bubble-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .bubble-link:hover {
+            background: rgba(255, 107, 74, 0.08);
+            border-color: rgba(255, 107, 74, 0.3);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .bubble-link svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            opacity: 0.6;
+            transition: opacity 0.25s ease;
+        }
+
+        .bubble-link:hover svg {
+            opacity: 1;
+        }
+
+        /* Close hint */
+        .bubble-close {
+            padding: 8px 16px 12px;
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Glow ring around robot when sleeping */
+        .robot-glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            border: 2.5px solid rgba(255, 143, 107, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 18px rgba(255, 107, 74, 0.4), 0 0 40px rgba(255, 107, 74, 0.2), 0 0 70px rgba(255, 107, 74, 0.1);
+            animation: glowRingPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowRingPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; box-shadow: 0 0 18px rgba(255, 107, 74, 0.4), 0 0 40px rgba(255, 107, 74, 0.2), 0 0 70px rgba(255, 107, 74, 0.1); }
+            50% { transform: translate(-50%, -50%) scale(1.35); opacity: 0.4; box-shadow: 0 0 30px rgba(255, 107, 74, 0.5), 0 0 60px rgba(255, 107, 74, 0.25), 0 0 90px rgba(255, 107, 74, 0.1); }
+        }
+
+        .robot-contact.awake .robot-glow-ring { display: none; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .robot-contact {
+                top: 80px;
+                right: 16px;
+            }
+
+            .robot-contact.traveled {
+                top: calc(50vh - 38px);
+                right: 16px;
+            }
+
+            .robot-chat-bubble {
+                top: auto;
+                bottom: calc(-100% - 20px);
+                right: 50%;
+                transform: translateX(50%) translateY(10px) scale(0.95);
+                width: 260px;
+            }
+
+            .robot-chat-bubble::before {
+                top: -7px;
+                right: 50%;
+                transform: translateX(50%) rotate(45deg);
+                border-right: none;
+                border-left: 1px solid rgba(255, 107, 74, 0.25);
+                border-top: 1px solid rgba(255, 107, 74, 0.25);
+            }
+
+            .robot-chat-bubble.visible {
+                transform: translateX(50%) translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .robot-contact.traveled {
+                top: 30vh;
+            }
+
+            .robot-chat-bubble {
+                position: fixed;
+                top: auto;
+                bottom: 20vh;
+                left: 12px;
+                right: 12px;
+                width: auto;
+                transform: translateY(10px) scale(0.95);
+            }
+
+            .robot-chat-bubble.visible {
+                transform: translateY(0) scale(1);
+            }
+        }
+
         /* Domain Experience */
         .domain-section {
             padding: 60px 0;
@@ -2780,6 +3375,51 @@
             <div class="orb-inner"></div>
         </div>
         <div class="orb-tooltip">AI-Powered Solutions</div>
+    </div>
+
+    <!-- Sleeping Robot Contact Widget -->
+    <div class="robot-contact sleeping" id="robotContact">
+        <div class="robot-widget">
+            <div class="robot-glow-ring"></div>
+            <div class="robot-antenna-contact"></div>
+            <div class="robot-head">
+                <div class="robot-eyes">
+                    <div class="robot-eye"></div>
+                    <div class="robot-eye"></div>
+                </div>
+            </div>
+            <div class="robot-body">
+                <div class="robot-arm left"></div>
+                <div class="robot-arm right"></div>
+            </div>
+            <span class="zzz">Z</span>
+            <span class="zzz">z</span>
+            <span class="zzz">z</span>
+        </div>
+
+        <div class="robot-hint">wake me up</div>
+
+        <div class="robot-chat-bubble" id="robotBubble">
+            <div class="bubble-scan"></div>
+            <div class="bubble-header">
+                <div class="bubble-status"></div>
+                <div class="bubble-title">AI LABS ASSISTANT</div>
+            </div>
+            <div class="bubble-messages" id="bubbleMessages">
+                <div class="bubble-msg" id="bubbleMsg"></div>
+            </div>
+            <div class="bubble-links" id="bubbleLinks">
+                <a href="mailto:varunbhatt21@gmail.com" class="bubble-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                    varunbhatt21@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/varunbhtt21/" class="bubble-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+            <div class="bubble-close">click robot to close</div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -3821,6 +4461,150 @@
                     aiOrb.classList.remove('scrolling');
                 }, 300);
             }
+        });
+        // ===== SLEEPING ROBOT CONTACT WIDGET =====
+        const robotContact = document.getElementById('robotContact');
+        const robotBubble = document.getElementById('robotBubble');
+        const bubbleMsg = document.getElementById('bubbleMsg');
+        const bubbleLinks = document.getElementById('bubbleLinks');
+        let robotAwake = false;
+        let typeTimeout = null;
+
+        const robotMessages = [
+            'Hey there! <span class="highlight">*yawns*</span> ...Oh! You woke me up!',
+            'I\'m the AI Labs assistant. Want to <span class="highlight">build something amazing</span> together?',
+            'Here\'s how you can reach the team:'
+        ];
+
+        function typeMessage(el, html, speed, callback) {
+            // Parse HTML: separate tags from visible characters
+            const chars = [];
+            let inTag = false;
+            let tagBuffer = '';
+            for (let i = 0; i < html.length; i++) {
+                if (html[i] === '<') { inTag = true; tagBuffer = '<'; continue; }
+                if (inTag) {
+                    tagBuffer += html[i];
+                    if (html[i] === '>') { inTag = false; chars.push({ type: 'tag', val: tagBuffer }); tagBuffer = ''; }
+                    continue;
+                }
+                chars.push({ type: 'char', val: html[i] });
+            }
+
+            let output = '';
+            let idx = 0;
+            el.innerHTML = '<span class="type-cursor"></span>';
+            el.classList.add('typed');
+
+            function next() {
+                if (idx >= chars.length) {
+                    // Remove cursor when done
+                    const cur = el.querySelector('.type-cursor');
+                    if (cur) cur.remove();
+                    if (callback) callback();
+                    return;
+                }
+                const c = chars[idx++];
+                if (c.type === 'tag') {
+                    output += c.val;
+                    el.innerHTML = output + '<span class="type-cursor"></span>';
+                    next(); // tags are instant
+                } else {
+                    output += c.val;
+                    el.innerHTML = output + '<span class="type-cursor"></span>';
+                    const delay = c.val === '.' || c.val === '!' || c.val === '?' ? 200 :
+                                  c.val === ',' ? 100 :
+                                  c.val === ' ' ? 40 :
+                                  25 + Math.random() * 20;
+                    typeTimeout = setTimeout(next, delay);
+                }
+            }
+            next();
+        }
+
+        let robotAnimating = false;
+
+        function wakeRobot() {
+            if (robotAnimating) return;
+
+            if (robotAwake) {
+                // === CLOSE SEQUENCE ===
+                robotAnimating = true;
+                if (typeTimeout) clearTimeout(typeTimeout);
+
+                // 1. Hide bubble
+                robotBubble.classList.remove('visible');
+                bubbleLinks.classList.remove('visible');
+
+                // 2. After bubble fades, travel back up
+                setTimeout(() => {
+                    robotContact.classList.remove('traveled');
+
+                    // 3. After travel back, go to sleep
+                    setTimeout(() => {
+                        robotContact.classList.remove('awake');
+                        robotContact.classList.add('sleeping');
+                        bubbleMsg.innerHTML = '';
+                        bubbleMsg.classList.remove('typed');
+                        robotAwake = false;
+                        robotAnimating = false;
+                    }, 1500);
+                }, 500);
+
+                return;
+            }
+
+            // === OPEN SEQUENCE ===
+            robotAnimating = true;
+            robotAwake = true;
+
+            // 1. Wake shake
+            robotContact.classList.remove('sleeping');
+            robotContact.classList.add('waking');
+
+            // 2. After shake, go awake + start traveling down
+            setTimeout(() => {
+                robotContact.classList.remove('waking');
+                robotContact.classList.add('awake');
+                robotContact.classList.add('traveled');
+
+                // 3. After travel completes, show bubble + type
+                setTimeout(() => {
+                    robotBubble.classList.add('visible');
+                    robotAnimating = false;
+
+                    // Type messages sequentially
+                    let msgIdx = 0;
+                    function typeNext() {
+                        if (msgIdx >= robotMessages.length) {
+                            setTimeout(() => {
+                                bubbleLinks.classList.add('visible');
+                            }, 300);
+                            return;
+                        }
+                        const msg = robotMessages[msgIdx];
+                        msgIdx++;
+                        typeMessage(bubbleMsg, msg, 30, () => {
+                            setTimeout(typeNext, 600);
+                        });
+                    }
+                    setTimeout(typeNext, 400);
+                }, 1500);
+            }, 550);
+        }
+
+        robotContact.addEventListener('click', (e) => {
+            // Don't close if clicking a link
+            if (e.target.closest('.bubble-link')) return;
+            wakeRobot();
+        });
+
+        // Add hover effect for custom cursor
+        robotContact.addEventListener('mouseenter', () => {
+            if (cursor) cursor.classList.add('hover');
+        });
+        robotContact.addEventListener('mouseleave', () => {
+            if (cursor) cursor.classList.remove('hover');
         });
     </script>
 </body>
